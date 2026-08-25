@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabriel Boggia - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <header id="inicio">
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#sobre-mi">Sobre mi</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+        <div class="hero">
+            <canvas id="particles-canvas"></canvas>
+            <div class="hero-content">
+                <h1><span class="greeting">Hola,</span> <span class="name">soy Gaby</span></h1>
+                <p>Desarrollador de Software</p>
+                <div class="hero-social-links">
+                    <a href="mailto:gabrielboggia@gmail.com" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="proyectos">
+            <h2 class="animate-on-scroll glow-in">Proyectos</h2>
+            <div class="projects-viewer">
+                <button class="project-nav-btn project-nav-prev" aria-label="Proyecto anterior">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="projects-track">
+                    <div class="project-card active">
+                        <div class="project-info">
+                            <h3>Nombre del Proyecto</h3>
+                            <p>Descripcion detallada del proyecto que explica su proposito, funcionalidades principales y el problema que resuelve.</p>
+                            <div class="technologies">
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Node.js</span>
+                            </div>
+                        </div>
+                        <div class="project-carousel" data-carousel="0">
+                            <button class="carousel-btn prev-btn" aria-label="Imagen anterior">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <div class="carousel-images">
+                                <div class="carousel-image active">
+                                    <img src="https://via.placeholder.com/600x400" alt="Proyecto imagen 1">
+                                </div>
+                                <div class="carousel-image">
+                                    <img src="https://via.placeholder.com/400x600" alt="Proyecto imagen 2">
+                                </div>
+                                <div class="carousel-image">
+                                    <img src="https://via.placeholder.com/600x400" alt="Proyecto imagen 3">
+                                </div>
+                            </div>
+                            <button class="carousel-btn next-btn" aria-label="Imagen siguiente">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-info">
+                            <h3>Otro Proyecto</h3>
+                            <p>Descripcion de otro proyecto destacando sus caracteristicas unicas y el impacto que genera.</p>
+                            <div class="technologies">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Django</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                            </div>
+                        </div>
+                        <div class="project-carousel" data-carousel="1">
+                            <button class="carousel-btn prev-btn" aria-label="Imagen anterior">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <div class="carousel-images">
+                                <div class="carousel-image active">
+                                    <img src="https://via.placeholder.com/600x400" alt="Proyecto imagen 1">
+                                </div>
+                                <div class="carousel-image">
+                                    <img src="https://via.placeholder.com/600x400" alt="Proyecto imagen 2">
+                                </div>
+                            </div>
+                            <button class="carousel-btn next-btn" aria-label="Imagen siguiente">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <button class="project-nav-btn project-nav-next" aria-label="Proyecto siguiente">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="project-dots"></div>
+        </section>
+
+        <section id="sobre-mi">
+            <h2 class="animate-on-scroll glow-in">Sobre mi</h2>
+            <div class="about-content">
+                <div class="about-text animate-on-scroll slide-left">
+                    <p>Soy un desarrollador de software apasionado por crear soluciones innovadoras y eficientes. Con experiencia en diversas tecnologias y metodologias de desarrollo, me enfoco en entregar productos de alta calidad que resuelvan problemas reales.</p>
+                </div>
+                <div class="about-actions animate-on-scroll slide-right">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Gabriel Boggia. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
