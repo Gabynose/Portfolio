@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Press+Start+2P&display=swap');
 
 * {
     margin: 0;
@@ -324,7 +324,6 @@ section h2::after {
     background: var(--dark-gray);
     border: 2px solid var(--medium-gray);
     border-radius: var(--radius);
-    padding: 2rem;
     box-shadow: var(--pixel-shadow);
 }
 
@@ -336,6 +335,38 @@ section h2::after {
 
 .project-card:hover {
     border-color: var(--light-gray);
+}
+
+/* PC project layout - wide image showcase on top, info below */
+.project-pc {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.project-pc .project-info {
+    padding: 0 2rem 2rem;
+}
+
+.project-pc .project-carousel {
+    padding: 2rem 2rem 0;
+}
+
+/* Mobile project layout - phone mockup beside info */
+.project-mobile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.project-mobile > .project-info {
+    flex: 1;
+}
+
+.project-mobile > .project-carousel {
+    flex: 0 0 auto;
 }
 
 .project-nav-btn {
@@ -438,9 +469,8 @@ section h2::after {
     max-width: 500px;
     overflow: hidden;
     border-radius: var(--radius);
-    background: var(--medium-gray);
+    background: var(--black);
     border: 2px solid var(--light-gray);
-    transition: height 0.4s ease;
 }
 
 .carousel-image {
@@ -463,10 +493,35 @@ section h2::after {
 
 .carousel-image img {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
     object-fit: contain;
-    image-rendering: pixelated;
+}
+
+/* PC showcase - wide fixed-height box, full image visible */
+.project-pc .carousel-images {
+    max-width: none;
+    width: 100%;
+    height: 460px;
+}
+
+.project-pc .carousel-image img {
+    object-fit: contain;
+    padding: 0.5rem;
+}
+
+/* Mobile mockup - tall narrow box styled like a phone */
+.project-mobile .carousel-images {
+    width: 280px;
+    height: 560px;
+    max-width: none;
+    border-radius: 36px;
+    border: 3px solid var(--light-gray);
+    box-shadow: inset 0 0 0 24px rgba(0, 0, 0, 0.35);
+}
+
+.project-mobile .carousel-image img {
+    object-fit: cover;
 }
 
 .carousel-btn {
@@ -610,6 +665,24 @@ footer {
         height: 40px;
         font-size: 0.85rem;
     }
+
+    .project-pc .carousel-images {
+        height: 320px;
+    }
+
+    .project-mobile {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .project-mobile .carousel-images {
+        width: 220px;
+        height: 440px;
+    }
+
+    .project-mobile > .project-info {
+        text-align: left;
+    }
 }
 
 @media (max-width: 480px) {
@@ -624,6 +697,18 @@ footer {
     .carousel-btn {
         width: 36px;
         height: 36px;
+    }
+
+    .project-pc .carousel-images {
+        height: 240px;
+    }
+
+    .project-pc .project-carousel {
+        padding: 1.25rem 1.25rem 0;
+    }
+
+    .project-pc .project-info {
+        padding: 0 1.25rem 1.25rem;
     }
 
     section h2 {
@@ -652,18 +737,16 @@ footer {
 }
 
 .wasd-key {
-    width: 28px;
-    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.6rem;
-    font-weight: 600;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.9rem;
     color: var(--white);
-    background: rgba(30, 30, 30, 0.7);
-    border: 1px solid rgba(100, 100, 100, 0.4);
-    border-radius: 4px;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+    background: none;
+    border: none;
+    padding: 0;
 }
 
 /* Boost cooldown indicator */

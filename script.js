@@ -149,6 +149,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let keys = {};
 
+        let lastWheelTime = 0;
+        window.addEventListener('wheel', () => {
+            lastWheelTime = performance.now();
+        }, { passive: true });
+
         function getPageHeight() {
             return Math.max(
                 document.body.scrollHeight,
@@ -360,6 +365,54 @@ document.addEventListener('DOMContentLoaded', () => {
             particles.push(new Particle());
         }
 
+        let shootingStars = [];
+        let nextStarTime = performance.now() + 3000;
+
+        function spawnShootingStar() {
+            const angle = Math.PI * 0.05 + Math.random() * Math.PI * 0.1;
+            const speed = 8 + Math.random() * 5;
+            const length = 90 + Math.random() * 60;
+            const startX = Math.random() * canvas.width;
+            const startY = -20 - Math.random() * canvas.height * 0.2;
+            shootingStars.push({
+                x: startX,
+                y: startY,
+                angle,
+                vx: Math.cos(angle) * speed,
+                vy: Math.sin(angle) * speed,
+                length,
+                life: 1,
+                fade: 0.015 + Math.random() * 0.01
+            });
+        }
+
+        function updateAndDrawShootingStars() {
+            const now = performance.now();
+            if (now >= nextStarTime) {
+                spawnShootingStar();
+                nextStarTime = now + 4000 + Math.random() * 5000;
+            }
+
+            shootingStars = shootingStars.filter(star => star.life > 0);
+
+            shootingStars.forEach(star => {
+                star.x += star.vx;
+                star.y += star.vy;
+
+                ctx.save();
+                ctx.translate(star.x, star.y);
+                ctx.rotate(star.angle);
+                const grad = ctx.createLinearGradient(0, 0, -star.length, 0);
+                grad.addColorStop(0, `rgba(255,255,255,${star.life})`);
+                grad.addColorStop(1, 'rgba(255,255,255,0)');
+                ctx.fillStyle = grad;
+                ctx.fillRect(-star.length, -1.5, star.length, 3);
+                ctx.restore();
+
+                star.life -= star.fade;
+            });
+        }
+
         function updateShip() {
             let scrollY = window.scrollY;
 
@@ -437,12 +490,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const vh = window.innerHeight;
             const vpY = ship.y - scrollY;
-            if (vpY > vh * 0.8) {
-                window.scrollTo(0, ship.y - vh * 0.65);
-                scrollY = window.scrollY;
-            } else if (vpY < vh * 0.2) {
-                window.scrollTo(0, ship.y - vh * 0.35);
-                scrollY = window.scrollY;
+            const userScrolling = performance.now() - lastWheelTime < 500;
+            if (ship.moving && !userScrolling) {
+                if (vpY > vh * 0.8) {
+                    window.scrollTo(0, ship.y - vh * 0.65);
+                } else if (vpY < vh * 0.2) {
+                    window.scrollTo(0, ship.y - vh * 0.35);
+                }
             }
 
             const elements = document.querySelectorAll(COLLISION_SELECTOR);
@@ -508,6 +562,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 p.update();
                 p.draw();
             });
+            updateAndDrawShootingStars();
             updateShip();
             updateAttachments();
             if (ship.shakeFrames > 0) {
