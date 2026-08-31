@@ -9,12 +9,6 @@ resolucion de imagen recomendada para que las capturas se vean correctas.
 ------------------------------------------------------------------
 Diseño: imagen panoramica arriba en una caja de altura fija, con la informacion debajo.
 
-Dimensiones de la caja de imagen:
-  - Ancho: 100% de la tarjeta (varia con la pantalla)
-  - Alto fijo: 460px  (320px en tablets <=768px) / (240px en moviles <=480px)
-  - Ajuste de imagen: object-fit: contain  (la imagen se ve COMPLETA, con espacion
-    libre a los costados si la proporcion no coincide)
-
 RESOLUCION IMAGEN RECOMENDADA (landscape/ancha): 1600x684 px (o proporcion 16:7 aprox)
   - Es lo que usa la imagen real de "Hypercheck 1.jpg" (1600x684).
   - Formato: JPG/PNG, orientacion horizontal (ancho > alto).
@@ -24,15 +18,6 @@ RESOLUCION IMAGEN RECOMENDADA (landscape/ancha): 1600x684 px (o proporcion 16:7 
 ------------------------------------------------------------------
 2) PROYECTO CELULAR (class="project-mobile")
 ------------------------------------------------------------------
-Diseño: mockup de telefono (caja vertical alta y angosta, tipo dispositivo)
-        al costado del texto.
-
-Dimensiones de la caja de imagen (el "telefono"):
-  - Ancho: 280px   (220px en <=768px)
-  - Alto:  560px   (440px en <=768px)
-  - Radio bordes: 36px
-  - Ajuste de imagen: object-fit: cover  (la imagen RELLENA la caja, recortando los
-    bordes si es necesario)
 
 RESOLUCION IMAGEN RECOMENDADA (portrait/alta): 900x1800 px (proporcion 1:2, 9:18)
   - Como la caja es alta y angosta, la captura debe ser vertical (alto > ancho).
